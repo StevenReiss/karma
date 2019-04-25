@@ -1,0 +1,42 @@
+<project name='karma' default='compile'>
+
+   <property file='../../../../../build.properties' />
+   <property name='PRO' value='/research' />
+   <available file="${PRO}/ivy" type="dir" property="ivy.present" />
+   <property name='IVYBIN' value='${PRO}/ivy/java' />
+   <property name='KARMA' value='/research/people/spr/karma' />
+
+   <target name='init'>
+      <path id='karma.classpath'>
+	 <pathelement location='${KARMA}/java' />
+      </path>
+      <path id='test.classpath'>
+	 <pathelement location='${KARMA}/java' />
+      </path>
+   </target>
+
+   <target name='compile' depends='init'>
+      <javac srcdir='.' destdir='${KARMA}/java' debug='on' deprecation='on'
+		includeantruntime='false' excludes='scan/**' >
+	 <classpath refid='karma.classpath' />
+	 <compilerarg value='-Xlint:all' />
+      </javac>
+   </target>
+
+   <target name='clean'>
+      <delete dir='${KARMA}/java/edu/brown/cs/karma' />
+   </target>
+
+   <target name='test' depends='compile'>
+      <junit fork='true' printsummary='on'>
+	 <classpath refid='test.classpath' />
+	 <assertions><enable/></assertions>
+	 <formatter type='plain' />
+	 <test name='edu.brown.cs.karma.KarmaTest' />
+      </junit>
+   </target>
+
+</project>
+
+
+

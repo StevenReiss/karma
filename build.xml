@@ -1,0 +1,99 @@
+<project name='karma' default='bubbles'>
+
+   <property name='PRO' value='/pro' />
+   <property name='BUBBLESLIB' value='${PRO}/bubbles/lib' />
+
+   <target name='all'>
+      <ant antfile="build.xml" dir="javasrc" />
+   </target>
+
+   <path id='jdocsrc'>
+      <pathelement location='./javasrc' />
+      <pathelement location='${PRO}/ivy/javasrc' />
+    </path>
+
+   <target name='doc'>
+      <ant antfile='build.xml' dir='javasrc' target='doc' />
+      <zip zipfile='lib/apidoc.zip' basedir='doc' />
+   </target>
+
+   <target name='jar' depends='all' >
+      <jar destfile='karmadbg.jar'>
+	 <manifest>
+	 </manifest>
+	 <fileset dir='./java' includes='**/*.class' />
+      </jar>
+   </target>
+
+   <target name='bubbles' depends='all'>
+      <jar destfile='karma.jar'>
+	 <manifest>
+	 </manifest>
+	 <fileset dir='./java' includes='**/*.class' />
+      </jar>
+      <copy file='karma.jar' tofile='${BUBBLESLIB}/karma.jar' verbose='true' />
+   </target>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

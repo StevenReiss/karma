@@ -1,0 +1,26 @@
+<project name='fait' default='all' >
+
+   <property name='PRO' value='/research' />
+   <property name='IVYBIN' value='/research/ivy/java' />
+   <property name='KARMA' value='/research/people/spr/karma' />
+
+   <target name='all'>
+      <ant antfile="build.xml" dir="edu/brown/cs/karma" />
+   </target>
+
+   <path id='jdocsrc'>
+      <pathelement location='${KARMA}/java' />
+      <pathelement location='${IVYBIN}' />
+      <pathelement location='${PRO}/bubbles/lib/junit.jar' />
+      <fileset dir='${KARMA}/lib/' includes='asm*.jar' />
+   </path>
+
+
+   <target name='doc'>
+      <javadoc sourcepathref='jdocsrc' classpathref='bubbles.classpath' destdir='${PRO}/bubbles/doc'>
+	 <package name='edu.brown.cs.karma' />
+      </javadoc>
+   </target>
+
+
+</project>
