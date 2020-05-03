@@ -1,5 +1,6 @@
 <project name='karma' default='bubbles'>
 
+   <property name='UPRO' value='/research/people/spr' />
    <property name='PRO' value='/pro' />
    <property name='BUBBLESLIB' value='${PRO}/bubbles/lib' />
 
@@ -31,6 +32,7 @@
 	 </manifest>
 	 <fileset dir='./java' includes='**/*.class' />
       </jar>
+      <copy file='karma.jar' tofile='${UPRO}/fait/lib/karma.jar' verbose='true' />
       <copy file='karma.jar' tofile='${BUBBLESLIB}/karma.jar' verbose='true' />
    </target>
 
