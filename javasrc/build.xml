@@ -1,8 +1,9 @@
 <project name='fait' default='all' >
 
-   <property name='PRO' value='/research' />
-   <property name='IVYBIN' value='/research/ivy/java' />
-   <property name='KARMA' value='/research/people/spr/karma' />
+   <property file='../build.properties' />
+   <property name='PRO' value='/pro' />
+   <property name='IVYBIN' value='${PRO}/ivy/java' />
+   <property name='KARMA' value='${PRO}/karma' />
 
    <target name='all'>
       <ant antfile="build.xml" dir="edu/brown/cs/karma" />

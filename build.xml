@@ -1,10 +1,27 @@
 <project name='karma' default='bubbles'>
 
-   <property name='UPRO' value='/research/people/spr' />
-   <property name='PRO' value='/pro' />
+   <property file='build.properties' />
+
+   <available file="./build.properties" type='file' property='setup.done' />
+   <path id='setuppath'>
+      <pathelement location='..' />
+   </path>
+   <path id='seedepath'>
+      <pathelement location='.' />
+   </path>
+   <property name='setupfile' refid='setuppath' />
+   <property name='seedefile' refid='seedepath' />
+   <target name='setup' unless='setup.done'>
+      <echo file='./build.properties' message="PRO=${setupfile}${line.separator}" />
+      <echo file='./build.properties' message='SEEDE=${seedefile}${line.separator}' append='true' />
+      <property name='PRO' value='${setupfile}' />
+      <property name='KARMA' value='${seedefile}' />
+      <mkdir dir='./java/edu/brown/cs/seede' />
+   </target>
+
    <property name='BUBBLESLIB' value='${PRO}/bubbles/lib' />
 
-   <target name='all'>
+   <target name='all' depends='setup'>
       <ant antfile="build.xml" dir="javasrc" />
    </target>
 
@@ -32,7 +49,7 @@
 	 </manifest>
 	 <fileset dir='./java' includes='**/*.class' />
       </jar>
-      <copy file='karma.jar' tofile='${UPRO}/fait/lib/karma.jar' verbose='true' />
+      <copy file='karma.jar' tofile='${PRO}/fait/lib/karma.jar' verbose='true' />
       <copy file='karma.jar' tofile='${BUBBLESLIB}/karma.jar' verbose='true' />
    </target>
 
