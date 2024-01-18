@@ -13,7 +13,7 @@
    <property name='seedefile' refid='seedepath' />
    <target name='setup' unless='setup.done'>
       <echo file='./build.properties' message="PRO=${setupfile}${line.separator}" />
-      <echo file='./build.properties' message='SEEDE=${seedefile}${line.separator}' append='true' />
+      <echo file='./build.properties' message='KARMA=${seedefile}${line.separator}' append='true' />
       <property name='PRO' value='${setupfile}' />
       <property name='KARMA' value='${seedefile}' />
       <mkdir dir='./java/edu/brown/cs/seede' />
