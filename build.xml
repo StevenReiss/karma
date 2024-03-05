@@ -6,17 +6,17 @@
    <path id='setuppath'>
       <pathelement location='..' />
    </path>
-   <path id='seedepath'>
+   <path id='karmapath'>
       <pathelement location='.' />
    </path>
    <property name='setupfile' refid='setuppath' />
-   <property name='seedefile' refid='seedepath' />
+   <property name='karmafile' refid='karmapath' />
    <target name='setup' unless='setup.done'>
       <echo file='./build.properties' message="PRO=${setupfile}${line.separator}" />
-      <echo file='./build.properties' message='KARMA=${seedefile}${line.separator}' append='true' />
+      <echo file='./build.properties' message='KARMA=${karmafile}${line.separator}' append='true' />
       <property name='PRO' value='${setupfile}' />
-      <property name='KARMA' value='${seedefile}' />
-      <mkdir dir='./java/edu/brown/cs/seede' />
+      <property name='KARMA' value='${karmafile}' />
+      <mkdir dir='./java/edu/brown/cs/karma' />
    </target>
 
    <property name='BUBBLESLIB' value='${PRO}/bubbles/lib' />
