@@ -63,7 +63,9 @@ public static @Tainted <T extends Object> T taint(T arg)
 
 public static boolean event(String event)               { return true; }
 
+// CHECKSTYLE:OFF
 public static boolean KarmaEvent(String event)          { return true; }
+// CHECKSTYLE:ON
 
 
 
